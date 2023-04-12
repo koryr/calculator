@@ -1,38 +1,41 @@
-package org.example;
+package com.pezesha;
 
-import junit.framework.Test;
-import junit.framework.TestCase;
-import junit.framework.TestSuite;
+import org.junit.Before;
+import org.junit.Test;
 
 /**
  * Unit test for simple App.
  */
-public class AppTest 
-    extends TestCase
+public class AppTest
 {
-    /**
-     * Create the test case
-     *
-     * @param testName name of the test case
-     */
-    public AppTest( String testName )
-    {
-        super( testName );
+    private App app;
+
+    @Before
+    public void setUp() {
+//Arrange
+        app = new App();
     }
 
-    /**
-     * @return the suite of tests being tested
-     */
-    public static Test suite()
-    {
-        return new TestSuite( AppTest.class );
-    }
 
     /**
-     * Rigourous Test :-)
+     * test calculator function
      */
-    public void testApp()
-    {
-        assertTrue( true );
+
+    @Test
+    public void testCalculatorDailyPayment() {
+        System.out.println("Daily Repayment");
+        app.calculator(100,11,8, App.Frequency.DAILY);
+    }
+
+    @Test
+    public void testCalculatorBIMonthly() {
+        System.out.println("BI-Monthly Repayment");
+        app.calculator(100,3,8, App.Frequency.BI_MONTHLY);
+    }
+
+    @Test
+    public void testCalculatorMonthly() {
+        System.out.println("Monthly Repayment");
+        app.calculator(100,3,8, App.Frequency.MONTHLY);
     }
 }
